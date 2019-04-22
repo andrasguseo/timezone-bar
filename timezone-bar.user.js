@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://central.tri.be/*
 // @match        https://calendar.google.com/*
+// @downloadURL  https://github.com/andrasguseo/timezone-bar/raw/master/timezone-bar.user.js
 // @grant        none
 // ==/UserScript==
 
