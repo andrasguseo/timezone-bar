@@ -54,7 +54,12 @@
 
         for( var zone in timeZones ) {
             var newHour = hour + timeZones[zone].offset;
-            if ( newHour > 23 ) newHour = newHour-24;
+            if ( newHour > 23 ) {
+                newHour = newHour-24;
+            }
+            elseif ( newHour < 0 ) {
+                newHour = newHour+24;
+            }
             html2 += '<div id="' + zone.toLowerCase() + '" class="timezone">';
             if ( min < 10 ) leadingZero = '0';
             html2 += timeZones[zone].name + ' - ' + newHour + ":" + leadingZero + min;
@@ -100,6 +105,7 @@
      * Added Santiago
      * Moved Gustavo
      * Removed Jen :(
+     * Fixed hours lower than 0
      *
      * 0.2 - 2019-04-22
      * Updated with Deblyn
