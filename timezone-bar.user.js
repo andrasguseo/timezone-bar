@@ -57,7 +57,7 @@
             if ( newHour > 23 ) {
                 newHour = newHour-24;
             }
-            elseif ( newHour < 0 ) {
+            else if ( newHour < 0 ) {
                 newHour = newHour+24;
             }
             html2 += '<div id="' + zone.toLowerCase() + '" class="timezone">';
