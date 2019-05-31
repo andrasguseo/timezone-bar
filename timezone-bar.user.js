@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Timezone Bar
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  try to take over the world!
 // @author       You
 // @match        https://central.tri.be/*
@@ -15,13 +15,13 @@
 
     var timeZones = {
         "pacific":    { name: "Pacific",    offset: -7, people: "Barry" },
-        "mountain":   { name: "Mountain",   offset: -6, people: "Brendan,  Neill,  Jeff" },
-        "central":    { name: "Central",    offset: -5, people: "Rachel,  Ali,  Cliff,  LaToya,  Mike,  Sky,  Jen" },
-        "eastern":    { name: "Eastern",    offset: -4, people: "Zach,  Courtney,  Ed,  LeGeoff,  Jennifer,  Shelby" },
-        "argentina":  { name: "Argentina",  offset: -3, people: "Gustavo,  Deblyn, Juan,  Nico,  Patricia,  Victor" },
+        "mountain":   { name: "Mountain",   offset: -6, people: "Brendan, Neill, Jeff" },
+        "central":    { name: "Central",    offset: -5, people: "Rachel, Ali, LaToya, Mike, Sky" },
+        "eastern":    { name: "Eastern",    offset: -4, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jennifer, Shelby" },
+        "argentina":  { name: "Argentina",  offset: -3, people: "Deblyn, Juan, Nico, Patricia, Santiago, Victor" },
         "utc":        { name: "UTC",        offset: 0,  people: "" },
         "canary":     { name: "Canary",     offset: 1,  people: "Shane" },
-        "paris":      { name: "Paris",      offset: 2,  people: "Jeremy,  Luca" },
+        "paris":      { name: "Paris",      offset: 2,  people: "Jeremy, Luca" },
         "cairo":      { name: "Cairo",      offset: 2,  people: "Alaa" },
         "bangladesh": { name: "Bangladesh", offset: 6,  people: "Rafsun" },
     };
@@ -96,6 +96,11 @@
 
     /**
      * CHANGELOG
+     * 0.3 - 2019-05-31
+     * Added Santiago
+     * Moved Gustavo
+     * Removed Jen :(
+     *
      * 0.2 - 2019-04-22
      * Updated with Deblyn
      * Fixed hours higher than 24
