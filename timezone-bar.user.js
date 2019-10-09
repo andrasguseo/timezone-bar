@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Timezone Bar
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  try to take over the world!
 // @author       You
 // @match        https://central.tri.be/*
@@ -15,10 +15,10 @@
 
     var timeZones = {
         "pacific":    { name: "Pacific",    offset: -7, people: "Barry" },
-        "mountain":   { name: "Mountain",   offset: -6, people: "Brendan, Neill, Jeff" },
-        "central":    { name: "Central",    offset: -5, people: "Rachel, Ali, LaToya, Mike, Sky" },
-        "eastern":    { name: "Eastern",    offset: -4, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jennifer, Shelby" },
-        "argentina":  { name: "Argentina",  offset: -3, people: "Deblyn, Juan, Nico, Patricia, Santiago, Victor" },
+        "mountain":   { name: "Mountain",   offset: -6, people: "Brendan, Sarah, Neill, Jeff" },
+        "central":    { name: "Central",    offset: -5, people: "Rachel, Ali, Jenny, LaToya, Mike, Sky" },
+        "eastern":    { name: "Eastern",    offset: -4, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jaime, Jennifer" },
+        "argentina":  { name: "S.America",  offset: -3, people: "Deblyn, Patricia, Raul, Santiago, Victor" },
         "utc":        { name: "UTC",        offset: 0,  people: "" },
         "canary":     { name: "Canary",     offset: 1,  people: "Shane" },
         "paris":      { name: "Paris",      offset: 2,  people: "Jeremy, Luca" },
@@ -101,6 +101,10 @@
 
     /**
      * CHANGELOG
+     * 0.4 - 2019-10-09
+     * Added Sarah and Raul
+     * Removed Shelby
+     *
      * 0.3 - 2019-05-31
      * Added Santiago
      * Moved Gustavo
