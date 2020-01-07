@@ -17,7 +17,7 @@
         "pacific":    { name: "Pacific",    dst: "true",  offset: -8, people: "Barry" },
         "mountain":   { name: "Mountain",   dst: "true",  offset: -7, people: "Brendan, Sarah, Neill, Jeff" },
         "central":    { name: "Central",    dst: "true",  offset: -6, people: "Rachel, Ali, Jenny, LaToya, Mike, Sky" },
-        "eastern":    { name: "Eastern",    dst: "true",  offset: -5, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jaime, Jennifer" },
+        "eastern":    { name: "Eastern",    dst: "true",  offset: -5, people: "Zach, Courtney, Gustavo, LeGeoff, Jaime, Jennifer" },
         "argentina":  { name: "S.America",  dst: "true",  offset: -4, people: "Deblyn, Patricia, Raul, Santiago, Victor" },
         "utc":        { name: "UTC",        dst: "true",  offset: 0,  people: "" },
         "canary":     { name: "Canary",     dst: "true",  offset: 0,  people: "Shane" },
