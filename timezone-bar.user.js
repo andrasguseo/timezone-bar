@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Timezone Bar
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  try to take over the world!
 // @author       You
 // @match        https://central.tri.be/*
@@ -14,16 +14,16 @@
     'use strict';
 
     var timeZones = {
-        "pacific":    { name: "Pacific",    offset: -7, people: "Barry" },
-        "mountain":   { name: "Mountain",   offset: -6, people: "Brendan, Sarah, Neill, Jeff" },
-        "central":    { name: "Central",    offset: -5, people: "Rachel, Ali, Jenny, LaToya, Mike, Sky" },
-        "eastern":    { name: "Eastern",    offset: -4, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jaime, Jennifer" },
-        "argentina":  { name: "S.America",  offset: -3, people: "Deblyn, Patricia, Raul, Santiago, Victor" },
-        "utc":        { name: "UTC",        offset: 0,  people: "" },
-        "canary":     { name: "Canary",     offset: 1,  people: "Shane" },
-        "paris":      { name: "Paris",      offset: 2,  people: "Jeremy, Luca" },
-        "cairo":      { name: "Cairo",      offset: 2,  people: "Alaa" },
-        "bangladesh": { name: "Bangladesh", offset: 6,  people: "Rafsun" },
+        "pacific":    { name: "Pacific",    dst: "true",  offset: -8, people: "Barry" },
+        "mountain":   { name: "Mountain",   dst: "true",  offset: -7, people: "Brendan, Sarah, Neill, Jeff" },
+        "central":    { name: "Central",    dst: "true",  offset: -6, people: "Rachel, Ali, Jenny, LaToya, Mike, Sky" },
+        "eastern":    { name: "Eastern",    dst: "true",  offset: -5, people: "Zach, Courtney, Ed, Gustavo, LeGeoff, Jaime, Jennifer" },
+        "argentina":  { name: "S.America",  dst: "true",  offset: -4, people: "Deblyn, Patricia, Raul, Santiago, Victor" },
+        "utc":        { name: "UTC",        dst: "true",  offset: 0,  people: "" },
+        "canary":     { name: "Canary",     dst: "true",  offset: 0,  people: "Shane" },
+        "paris":      { name: "Paris",      dst: "true",  offset: 1,  people: "Jeremy, Luca" },
+        "cairo":      { name: "Cairo",      dst: "false", offset: 2,  people: "Alaa" },
+        "bangladesh": { name: "Bangladesh", dst: "false", offset: 6,  people: "Rafsun" },
     };
 
     var html, html2;
@@ -52,8 +52,26 @@
         var min = d.getUTCMinutes();
         var leadingZero = '';
 
+        var dstMod = 0;
+        /* The getMonth() method returns the month of a date as a number from 0 to 11.
+           To get the correct month, you must add 1. Or deduct a month...
+         */
+        /* DST times for 2020 */
+        var dstDateSpring = new Date(2020,2,29);
+        var dstDateFall = new Date(2020,9,25);
+
+        /* If we're in summer time, we need to adjust the offset */
+        if ( d > dstDateSpring && d < dstDateFall ) {
+            dstMod = 1;
+        }
+
+        //console.log('time: ' + d + dstMod + dstDateSpring);
+
         for( var zone in timeZones ) {
-            var newHour = hour + timeZones[zone].offset;
+            /* If location doesn't use DST then set offset modifyer to zero */
+            if ( timeZones[zone].dst == "false" ) dstMod = 0;
+
+            var newHour = hour + timeZones[zone].offset + dstMod;
             if ( newHour > 23 ) {
                 newHour = newHour-24;
             }
@@ -101,6 +119,9 @@
 
     /**
      * CHANGELOG
+     * 0.5 - 2020-01-07
+     * Fixed DST offset bug
+     *
      * 0.4 - 2019-10-09
      * Added Sarah and Raul
      * Removed Shelby
